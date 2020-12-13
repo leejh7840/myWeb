@@ -1,6 +1,6 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org"></html>
-  <head th:replace="fragment/common :: head('Board')">
+  <head th:replace="fragment/common :: head('English')">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="starter-template.css" th:href="@{/css/starter-template.css}" rel="stylesheet">
-    <title>Board</title>
+    <title>English</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:replace="fragment/common :: menu('board')">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:replace="fragment/common :: menu('english')">
     <!-- <a class="navbar-brand" href="#">Spring Boot</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -24,15 +24,15 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Board</a>
+            <a class="nav-link" href="#">English</a>
         </li>
     </div> -->
     </nav>
     
     <div class="container">
-      <h5>Board</h5>
-      <div>Total rows: <span th:text="${boards.totalElements}"></span></div>
-      <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/board/list}">
+      <h5>English</h5>
+      <div>Total rows: <span th:text="${englishs.totalElements}"></span></div>
+      <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/english/list}">
         <div class="form-group mx-sm-3 mb-2">
           <label for="searchText" class="sr-only">Search</label>
           <input type="text" class="form-control" id="searchText" name="searchText" 
@@ -44,37 +44,37 @@
         <thead>
         <tr>
           <th scope="col">No</th>
-          <th scope="col">Title</th>
-          <th scope="col">Category</th>
-          <th scope="col">Writer</th>
+          <th scope="col">English</th>
+          <th scope="col">Korean</th>
+          <th scope="col">Remark</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="board : ${boards}">
-          <th th:text="${board.id}">1</th>
-          <td><a th:text="${board.title}" th:href="@{/board/form(id=${board.id})}">Mark</a></td>
-          <td><a th:text="${board.category.codechilddesc}" th:href="@{/board/docu(category_id=${board.category.id})}">Category</td>
-          <td th:text="${board.username}">Writer</td>
+        <tr th:each="english : ${englishs}">
+          <th th:text="${english.id}">1</th>
+          <td><a th:text="${english.englishtext}" th:href="@{/english/form(id=${english.id})}">English</a></td>
+          <td th:text="${english.korean}">Korean</td>
+          <td th:text="${english.remark}">Remark</td>
         </tr>
         </tbody>
       </table>
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-          <li class="page-item" th:classappend="${1 == boards.pageable.pageNumber+1} ? 'disabled'">
-            <a class="page-link" href="#" th:href="@{/board/list(page=${boards.pageable.pageNumber-1},searchText=${param.searchText})}" 
+          <li class="page-item" th:classappend="${1 == englishs.pageable.pageNumber+1} ? 'disabled'">
+            <a class="page-link" href="#" th:href="@{/english/list(page=${englishs.pageable.pageNumber-1},searchText=${param.searchText})}" 
             tabindex="-1" aria-disabled="true">Previous</a>
           </li>
-          <li class="page-item" th:classappend="${i == boards.pageable.pageNumber+1} ? 'disabled'" 
+          <li class="page-item" th:classappend="${i == englishs.pageable.pageNumber+1} ? 'disabled'" 
           th:each="i: ${#numbers.sequence(startPage, endPage)}">
-            <a class="page-link" href="#" th:href="@{/board/list(page=${i-1},searchText=${param.searchText})}" 
+            <a class="page-link" href="#" th:href="@{/english/list(page=${i-1},searchText=${param.searchText})}" 
             th:text="${i}">1</a></li>
-          <li class="page-item" th:classappend="${boards.totalPages == boards.pageable.pageNumber+1} ? 'disabled'">
-            <a class="page-link" href="#" th:href="@{/board/list(page=${boards.pageable.pageNumber+1},searchText=${param.searchText})}">Next</a>
+          <li class="page-item" th:classappend="${englishs.totalPages == englishs.pageable.pageNumber+1} ? 'disabled'">
+            <a class="page-link" href="#" th:href="@{/english/list(page=${englishs.pageable.pageNumber+1},searchText=${param.searchText})}">Next</a>
           </li>
         </ul>
       </nav>
       <div class="text-right">
-        <a type="button" class="btn btn-primary" th:href="@{/board/form}">New</a>
+        <a type="button" class="btn btn-primary" th:href="@{/english/form}">New</a>
       </div>
     </div>
     

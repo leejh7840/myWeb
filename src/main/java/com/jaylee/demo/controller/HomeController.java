@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
     @GetMapping
     public String index(){
-        return "index"; //5,13:14   4,19:00
+        return "index";
 
     }
 }
