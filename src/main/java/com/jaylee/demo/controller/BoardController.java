@@ -102,6 +102,6 @@ public class BoardController {
         }
         */
         model.addAttribute("boards",boards);
-        return "board/docu";
+        return "board/docu" ;
     }
 }
